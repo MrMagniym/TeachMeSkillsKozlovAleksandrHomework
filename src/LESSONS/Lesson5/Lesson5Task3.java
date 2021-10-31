@@ -2,9 +2,6 @@ package Lessons.Lesson5;
 
 import java.util.*;
 
-import static javafx.scene.input.KeyCode.K;
-import static javafx.scene.input.KeyCode.V;
-
 public class Lesson5Task3 {
 
     public static void main(String[] args) {
@@ -27,6 +24,7 @@ public class Lesson5Task3 {
         }
 
         System.out.println("Before:");
+
         for (Map.Entry entry : map.entrySet()) {
             System.out.println(entry.getKey() + " → " + entry.getValue());
         }
@@ -44,6 +42,7 @@ public class Lesson5Task3 {
         }
 
         System.out.println("After:");
+
         for (Map.Entry entry : mapInverse.entrySet()) {
             System.out.println(entry.getKey() + " → " + entry.getValue());
         }
