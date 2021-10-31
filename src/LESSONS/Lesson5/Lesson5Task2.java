@@ -1,4 +1,5 @@
-package LESSONS.Lesson5;
+package Lessons.Lesson5;
+
 import java.util.*;
 
 public class Lesson5Task2 {
@@ -32,7 +33,7 @@ public class Lesson5Task2 {
     }
 
     private static void incMapValuesByLetters(char[] array){
-        var temp = 0;
+        int temp = 0;
         for (int i = 0; i < array.length; i++){
             for (Map.Entry entry: map.entrySet()) {
                 if (Objects.equals(entry.getKey(), array[i])){
