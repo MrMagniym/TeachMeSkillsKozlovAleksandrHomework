@@ -1,4 +1,5 @@
 package Lessons.Lesson5;
+
 import java.util.Scanner;
 
 public class Lesson5Task1 {
