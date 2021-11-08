@@ -11,7 +11,6 @@ public class RomanNumbers implements IBaseMathActions{
     public Integer romanToArabic(String romanNumber) {
 
         if (isDigit(romanNumber)){
-            ArabicNumbers arabicNumbers = new ArabicNumbers();
             ArabicNumbers.arabicWasUsed = true;
             return Integer.parseInt(romanNumber);
         }
