@@ -1,41 +1,32 @@
 package Lessons.Lesson7;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.util.*;
 
 public class ArabicRomanCalculator {
 
-    static boolean roman = false;
-    static boolean arabic = false;
-
-    static int A = 0;
-    static int result;
-    static int convertResult = 0;
-    static String rimResult = "";
-    static boolean arab = false;
-    static boolean rim = false;
-    static String [] masNum;
-
     public static void main (String[] args) {
-        String mathExpressionString = enterMathExpression();
 
+        String mathExpressionString = enterMathExpression();
         String[] mathExpression = refactorMathExpression(mathExpressionString);
 
-        int result = 0;
-
-        for (String element : mathExpression){
-            System.out.print(element);
-        }
-
         if (checkLengthOfMathExpression(mathExpression)){
-            System.out.println(firstMultiplicationAndDivision(mathExpression));
-        }
 
+            int result = crutchCalculation(mathExpression);
+
+            RomanNumbers romanNumbers = new RomanNumbers();
+            romanNumbers.printResult(result);
+        }
     }
 
     public static String enterMathExpression() {
         System.out.println("Enter your math expression");
-        Scanner in = new Scanner(System.in);
-        return in.nextLine();
+        //BufferedInputStream bufferedInputStream = new BufferedInputStream(new DataInputStream(System.in));
+        //return bufferedInputStream.;
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 
     public static String[] refactorMathExpression(String correctableMathExpression){
@@ -68,62 +59,63 @@ public class ArabicRomanCalculator {
     }
 
     public static boolean checkLengthOfMathExpression(String[] mathExpression) {
-        if (mathExpression.length < 3) { return false; }
-        else { return true; }
+        if (mathExpression.length < 3) { System.exit(0); }
+        return true;
     }
 
     public static int parseToInt(String str){
         return Integer.parseInt(str);
     }
-
-    public static int firstMultiplicationAndDivision(String[] mathExpression) {
+    //3*2+0-4*3/1+6-8*7/2/2/2+3-4*xi
+    public static int crutchCalculation(String[] mathExpression) {
         IBaseMathActions iBaseMathActions = new ArabicNumbers();
-        int tempCrutch = 0;
+        int tempCrutch = 1;
 
         for (int i = 0; i < mathExpression.length-2; ) {
             if (mathExpression[i+1].equals("*")) {
                 tempCrutch = iBaseMathActions.multiplication(parseToInt(mathExpression[i]), parseToInt(mathExpression[i+2]));
                 mathExpression[i] = "0";
-                mathExpression[i+1] = "+";
+                if (i > 0 && mathExpression[i-1].equals("-")){
+                    mathExpression[i+1] = "-";
+                }
+                else{
+                    mathExpression[i+1] = "+";
+                }
                 mathExpression[i+2] = Integer.toString(tempCrutch);
+
             }
             if (mathExpression[i+1].equals("/")) {
                 tempCrutch = iBaseMathActions.division(parseToInt(mathExpression[i]), parseToInt(mathExpression[i+2]));
                 mathExpression[i] = "0";
-                mathExpression[i+1] = "+";
+                if (i > 0 && mathExpression[i-1].equals("-")){
+                    mathExpression[i+1] = "-";
+                }
+                else{
+                    mathExpression[i+1] = "+";
+                }
                 mathExpression[i+2] = Integer.toString(tempCrutch);
             }
-            i = i+2;
-        }
-        System.out.println("");
-        for (String element : mathExpression){
-            System.out.print(element);
+            i += 2;
         }
 
+
         for (int i = 1; i < mathExpression.length; ) {
-            switch (mathExpression[i]) {
-                case "+" -> {
-                    tempCrutch += iBaseMathActions.addiction(tempCrutch, parseToInt(mathExpression[i+1]));
-                }
-                case "-" -> {
-                    tempCrutch -= iBaseMathActions.subtraction(tempCrutch, parseToInt(mathExpression[i+1]));
-                }
-                default -> System.out.println("Incorrect format of sign!");
+            if (i == 1){
+                tempCrutch = parseToInt(mathExpression[i-1]);
             }
-            i = i + 2;
+            switch (mathExpression[i]) {
+                case "+" -> tempCrutch = iBaseMathActions.addiction(tempCrutch, parseToInt(mathExpression[i+1]));
+                case "-" -> tempCrutch = iBaseMathActions.subtraction(tempCrutch, parseToInt(mathExpression[i+1]));
+                default -> {
+                    System.out.println("Incorrect format of sign!");
+                    System.exit(0);
+                }
+            }
+            i += 2;
         }
 
         return tempCrutch;
 
-    }
-
-    public static void outPut() {
-        if (arab) {
-            System.out.println(result + " | ");
-        }
-        if (rim) {
-            System.out.print(rimResult);
-        }
     }
 
 }

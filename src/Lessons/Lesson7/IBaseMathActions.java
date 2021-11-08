@@ -29,6 +29,7 @@ public interface IBaseMathActions {
         }
         catch (ArithmeticException arithmeticException){
             System.out.println("Error: " + arithmeticException);
+            System.exit(0);
         }
         return 1;
     }
