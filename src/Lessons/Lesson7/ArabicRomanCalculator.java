@@ -1,8 +1,6 @@
 package Lessons.Lesson7;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
+import java.io.*;
 import java.util.*;
 
 public class ArabicRomanCalculator {
@@ -23,10 +21,14 @@ public class ArabicRomanCalculator {
 
     public static String enterMathExpression() {
         System.out.println("Enter your math expression");
-        //BufferedInputStream bufferedInputStream = new BufferedInputStream(new DataInputStream(System.in));
-        //return bufferedInputStream.;
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            return bufferedReader.readLine();
+        } catch (IOException ioException) {
+            System.out.println("Error: " + ioException);
+            System.exit(0);
+        }
+        return "0";
     }
 
     public static String[] refactorMathExpression(String correctableMathExpression){
