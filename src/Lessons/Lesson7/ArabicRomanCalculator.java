@@ -68,7 +68,7 @@ public class ArabicRomanCalculator {
     public static int parseToInt(String str){
         return Integer.parseInt(str);
     }
-    //3*2+0-4*3/1+6-8*7/2/2/2+3-4*xi
+
     public static int crutchCalculation(String[] mathExpression) {
         IBaseMathActions iBaseMathActions = new ArabicNumbers();
         int tempCrutch = 1;
