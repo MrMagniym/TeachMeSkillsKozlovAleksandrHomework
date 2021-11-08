@@ -2,7 +2,7 @@ package Lessons.Lesson7;
 
 public class RomanNumbers implements IBaseMathActions{
 
-    public boolean romanWasUsed = false;
+    public static boolean romanWasUsed = false;
 
     public RomanNumbers(){
 
@@ -12,7 +12,7 @@ public class RomanNumbers implements IBaseMathActions{
 
         if (isDigit(romanNumber)){
             ArabicNumbers arabicNumbers = new ArabicNumbers();
-            arabicNumbers.arabicWasUsed = true;
+            ArabicNumbers.arabicWasUsed = true;
             return Integer.parseInt(romanNumber);
         }
 
@@ -50,6 +50,19 @@ public class RomanNumbers implements IBaseMathActions{
         else{
             return number + valueOfRomanLetter;
         }
+    }
+
+    public void printResult(int result){
+        ArabicNumbers arabicNumbers = new ArabicNumbers();
+        if (ArabicNumbers.arabicWasUsed && romanWasUsed) {
+            if (result > 0){ System.out.println("Calculation result: " + result + " | " + arabicNumbers.arabicToRoman(result)); }
+            else { System.out.println("Calculation result: " + result + " | -" + arabicNumbers.arabicToRoman(-result)); }
+        }
+        else if (romanWasUsed) {
+            if (result > 0){ System.out.println("Calculation result: " + arabicNumbers.arabicToRoman(result)); }
+            else { System.out.println("Calculation result: -" + arabicNumbers.arabicToRoman(result)); }
+        }
+        else { System.out.println("Calculation result: " + result); }
     }
 
 }

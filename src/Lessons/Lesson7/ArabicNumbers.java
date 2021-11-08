@@ -2,7 +2,7 @@ package Lessons.Lesson7;
 
 public class ArabicNumbers implements IBaseMathActions{
 
-    public boolean arabicWasUsed = false;
+    public static boolean arabicWasUsed = false;
 
     public ArabicNumbers(){
 
