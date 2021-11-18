@@ -2,7 +2,7 @@ package Lessons.Lesson11;
 
 public class BigArray {
 
-    private int[] bigArray = new int[1000000];
+    private final int[] bigArray = new int[1000000];
     private int count;
 
     public BigArray(){
@@ -15,14 +15,6 @@ public class BigArray {
 
     public synchronized int setCountZero(){
         return count = 0;
-    }
-
-    public synchronized int get(int index){
-        return bigArray[index];
-    }
-
-    public synchronized void set(int index, int value){
-        bigArray[index] = value;
     }
 
     public synchronized int getCount(){
