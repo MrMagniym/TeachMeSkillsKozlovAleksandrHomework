@@ -10,6 +10,10 @@ public class BigArrayThread implements Runnable, Callable<Integer> {
         this.bigArray = bigArray;
     }
 
+    public BigArrayThread(){
+
+    }
+
     @Override
     public void run() {
         for (int i = bigArray.setCountZero(); i < bigArray.length() - 1; i++){
