@@ -10,7 +10,6 @@ public class BigArrayThread implements Runnable, Callable<Integer> {
 
     }
 
-
     public BigArrayThread(BigArray bigArray){
         this.bigArray = bigArray;
     }
