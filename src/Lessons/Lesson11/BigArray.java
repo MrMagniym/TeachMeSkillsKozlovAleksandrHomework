@@ -17,10 +17,6 @@ public class BigArray {
         return count = 0;
     }
 
-    public synchronized int get(int index){
-        return bigArray[index];
-    }
-
     public synchronized int getCount(){
         return count;
     }
