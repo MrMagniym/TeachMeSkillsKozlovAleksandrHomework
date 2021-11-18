@@ -2,7 +2,13 @@ package Lessons.Lesson11;
 
 import java.util.concurrent.Callable;
 
-public record BigArrayThread(BigArray bigArray) implements Runnable, Callable<Integer> {
+public class BigArrayThread implements Runnable, Callable<Integer> {
+
+    private BigArray bigArray;
+
+    public BigArrayThread(BigArray bigArray){
+        this.bigArray = bigArray;
+    }
 
     @Override
     public void run() {
