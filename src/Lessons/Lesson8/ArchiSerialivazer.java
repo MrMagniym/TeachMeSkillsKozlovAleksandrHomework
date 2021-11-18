@@ -20,7 +20,7 @@ public class ArchiSerialivazer {
 
         serializeObject(demonOfTheAbyss, filePath);
 
-        printArrayOfBytes("Serialized object in byte array:", getByteArrayDataFromFile(filePath));
+        printArrayOfBytes(getByteArrayDataFromFile(filePath));
 
         Card deserializedDemonOfTheAbyss = deserializeObject(filePath);
 
@@ -121,8 +121,8 @@ public class ArchiSerialivazer {
                 '\n');
     }
 
-    private static void printArrayOfBytes(String message, byte[] arrayOfBytes) {
-        System.out.print(message + '\n');
+    private static void printArrayOfBytes(byte[] arrayOfBytes) {
+        System.out.print("Serialized object in byte array:" + '\n');
         for (byte arrayOfByte : arrayOfBytes) System.out.print(arrayOfByte + " ");
         System.out.println('\n');
     }
