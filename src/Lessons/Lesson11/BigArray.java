@@ -2,7 +2,7 @@ package Lessons.Lesson11;
 
 public class BigArray {
 
-    private final int[] bigArray = new int[1000000];
+    private int[] bigArray = new int[1000000];
     private int count;
 
     public BigArray(){
