@@ -21,6 +21,10 @@ public class BigArray {
         return bigArray[index];
     }
 
+    public synchronized void set(int index, int value){
+        bigArray[index] = value;
+    }
+
     public synchronized int getCount(){
         return count;
     }
